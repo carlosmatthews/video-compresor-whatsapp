@@ -22,9 +22,9 @@ tamaño_maximo = 42 # maximo en MB
 if tamaño_archivo > tamaño_maximo:
     print (tamaño_archivo)
     numero_de_partes = tamaño_archivo // tamaño_maximo + 1
-    print(clip.duration)# remplazar 25 por frame rate del video original
+    print(clip.duration)
     print (clip.duration // numero_de_partes)
-    
+
 
 
 
