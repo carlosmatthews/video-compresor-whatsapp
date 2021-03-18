@@ -4,7 +4,6 @@ para mostrar trabajos y su visualisacion rapida.
 """
 #TODO: DETERMINAR EL RATE DE COMPRESION A USAR EN FORMATO h264  Y SU DURACION PARA PARTIR EN SEGMENTOS MENORES A 64MB
 # probar peso en 720x480p@25 1000 Kb/s
-#TODO: BUSCAR MODULO DE PYTHON PARA CORTAR Y COMPRIMIR VIDEO. libreria MoviePY
 
 from moviepy.editor import *
 import os
@@ -23,16 +22,17 @@ if tamaño_archivo > tamaño_maximo:
     print (tamaño_archivo)
     numero_de_partes = tamaño_archivo // tamaño_maximo + 1
     print(clip.duration)
-    print (clip.duration // numero_de_partes)
+    fragmento = clip.duration // numero_de_partes
+    inicio = 0
+    for n in numero_de_partes:
+        pass
+        # copia y crear subclip segmentado
+        # guardar cada subclip
+        #segmentar y guardar, El ultimo debe ir hasta el final del original no hasta la suma de fragmenos
 
 
 
+#my_clip.write_videofile("movie.mp4") # default codec: 'libx264', 24 fps
+#my_clip.write_videofile("movie.mp4",fps=15)
 
-
-
-
-
-
-
-
-
+#myclip.subclip(in,out)en segundos
