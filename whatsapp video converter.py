@@ -12,27 +12,31 @@ mi_video = "E:/03 EDICIONES PROYECTOS ABIERTOS/misterio de obras publicas/acto c
 tamaño_video_out = (640,360) #luego se podra setear
 carpeta_salida_intermedio = "E:/03 EDICIONES PROYECTOS ABIERTOS/misterio de obras publicas/video_resize.mp4" #automatico igual a la de origen"""
 #ffmpeg_tools.ffmpeg_resize(mi_video, carpeta_salida_intermedio, tamaño_video_out)
-tamaño_archivo = os.stat(carpeta_salida_intermedio).st_size / 1024 / 1024 # peso en MB
 
+tamaño_archivo = os.stat(carpeta_salida_intermedio).st_size / 1024 / 1024 # peso en MB
 clip = VideoFileClip(carpeta_salida_intermedio)
 
-tamaño_maximo = 42 # maximo en MB
+tamaño_maximo = 42 # maximo en MB, luego sera seteable
 
 if tamaño_archivo > tamaño_maximo:
     print (tamaño_archivo)
-    numero_de_partes = tamaño_archivo // tamaño_maximo + 1
+    numero_de_partes = int(tamaño_archivo // tamaño_maximo + 1)
+    print(numero_de_partes)
     print(clip.duration)
-    fragmento = clip.duration // numero_de_partes
+    duracion_fragmento = int(clip.duration // numero_de_partes)
     inicio = 0
-    for n in numero_de_partes:
-        pass
+    fin = inicio + duracion_fragmento
+    for n in range(numero_de_partes):
         # copia y crear subclip segmentado
         # guardar cada subclip
         #segmentar y guardar, El ultimo debe ir hasta el final del original no hasta la suma de fragmenos
-
+        video_cortado = clip.subclip(inicio,inicio + fin)
+        nombre_video = f"fragmento_{n}.mp4"
+        video_cortado.write_videofile(nombre_video)
+        inicio += duracion_fragmento
 
 
 #my_clip.write_videofile("movie.mp4") # default codec: 'libx264', 24 fps
-#my_clip.write_videofile("movie.mp4",fps=15)
+
 
 #myclip.subclip(in,out)en segundos
