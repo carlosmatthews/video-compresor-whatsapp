@@ -51,7 +51,7 @@ def cortar_en_partes(video_escalado, ruta_salida):
 video_escalado, ruta_salida = escalar_video(mi_video)
 
 tamaño_archivo = os.stat(video_escalado).st_size / 1024 / 1024 # peso en MB
-tamaño_maximo = 42 # maximo en MB, luego sera seteable el base para whatsapp es 60MG
+tamaño_maximo = 60 # maximo en MB, luego sera seteable el base para whatsapp es 60MG
 
 if tamaño_archivo > tamaño_maximo:
     cortar_en_partes(video_escalado, ruta_salida)
