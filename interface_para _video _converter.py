@@ -1,25 +1,37 @@
 from tkinter import*
 from tkinter import filedialog
-#from whatsapp_video_converter import*
+from back_end_for_gui import*
 
-class Aplicacion():
+
+
+class VideoConverter():
+ 
     def __init__(self):
         self.window = Tk()
         self.window.title("video compresor whatsapp")
         self.window.geometry("300x200")
-        self.boton1 = Button(text ="select video",bg="pale green", command = open_file, font = ("Arial Bold", 12)).place(x=100,y=40)
-        self.boton2 = Button(text ="    convert    ", bg = "pale green", command = None, font = ("Arial Bold", 12)).place(x=100,y=80)
-        self.buton3 = Button(text ="      stop       ", bg = "pale green", command = None, font = ("Arial Bold", 12)).place(x=100,y=120)
+        self.boton1 = Button(text ="select video",bg="pale green", command = self.open_file, font = ("Arial Bold", 12))
+        self.boton1.pack(padx=10, pady=10)
+        self.boton2 = Button(text ="    convert    ", bg = "pale green", command = self.llamando_a_start, font = ("Arial Bold", 12))
+        self.boton2.pack(padx=10, pady=10)
+        self.buton3 = Button(text ="      stop       ", bg = "pale green", command = self.llamando_a_stop, font = ("Arial Bold", 12))
+        self.buton3.pack(padx=10, pady=10)
         self.window.mainloop()
+                      
+    def open_file(self):
+        self.mi_video = filedialog.askopenfilename(initialdir = "/",title = "selecione video")
+
+    def llamando_a_start(self):
+        start(self.mi_video)
+
+    def llamando_a_stop(self):
+        stop
 
 
-mi_video = None
-def open_file():
-    mi_video = filedialog.askopenfilename(initialdir = "/",title = "selecione video")
-    
 def inicio():
-    app = Aplicacion()    
+    app = VideoConverter()    
     return 0
+
 
 if __name__ == '__main__':
     inicio()
