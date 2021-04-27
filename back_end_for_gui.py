@@ -1,5 +1,5 @@
 """ programa para partir en segmentos y comprimir videos mas largos y de mayor peso que los 64 Mg que permite Whatsapp, 
-para mostrar trabajos y su visualisacion rapida.
+para mostrar trabajos y su visualizacion rapida.
 """
 #comprescion por defecto H264,('libx264', 24 fps)
 
@@ -13,7 +13,7 @@ import sys
 
 def start(mi_video):
     def escalar_video(video_original):
-        resolucion_video_out = (640,360) #tamaño para whatsapp, luego se podra setear
+        resolucion_video_out = (640,360) #tamaño para whatsapp, luego se podra setear en otros valores
         ruta_salida, nombre_salida = os.path.split(mi_video)
         nombre_salida = nombre_salida.rsplit(".", 1)
         nombre_salida.insert(1, "resize")
@@ -40,10 +40,10 @@ def start(mi_video):
         for n in range(numero_de_partes):
             video_cortado = clip.subclip(inicio,inicio + fin)# copia y crear subclip segmentado
             nombre_video = f"{ruta_salida}/fragmento_{n}.mp4"
-            video_cortado.write_vi0deofile(nombre_video) # guardar cada subclip
+            video_cortado.write_videofile(nombre_video) # guardar cada subclip
             inicio += duracion_fragmento
         clip.close()
-
+                
     video_escalado, ruta_salida = escalar_video(mi_video)
 
     tamaño_archivo = os.stat(video_escalado).st_size / 1024 / 1024 # peso en MB
@@ -52,6 +52,10 @@ def start(mi_video):
     if tamaño_archivo > tamaño_maximo:
         cortar_en_partes(video_escalado, ruta_salida)
         os.remove(video_escalado)
+    
+    return "terminado"                
+
+
 
 def stop():
     sys.exit()
