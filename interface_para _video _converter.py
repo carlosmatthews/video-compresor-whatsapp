@@ -1,7 +1,7 @@
 from tkinter import*
 from tkinter import filedialog
 from back_end_for_gui import*
-
+import threading
 
 
 class VideoConverter():
@@ -22,7 +22,9 @@ class VideoConverter():
         self.mi_video = filedialog.askopenfilename(initialdir = "/",title = "selecione video")
 
     def llamando_a_start(self):
-        start(self.mi_video)
+        hilo1 = threading.Thread(target=start(self.mi_video)) #crea un hilo para que la convercion se ejecute en paralelo
+        #self.ejecucion = start(self.mi_video)
+        hilo1.start() #inicio el hilo y llamada a funcion start
 
     def llamando_a_stop(self):
         stop
