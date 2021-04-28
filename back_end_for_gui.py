@@ -1,7 +1,7 @@
 """ programa para partir en segmentos y comprimir videos mas largos y de mayor peso que los 64 Mg que permite Whatsapp, 
 para mostrar trabajos y su visualizacion rapida.
 """
-#comprescion por defecto H264,('libx264', 24 fps)
+#comprecion por defecto H264,('libx264', 24 fps)
 
 
 
