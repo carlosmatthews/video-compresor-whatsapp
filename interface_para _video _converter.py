@@ -14,8 +14,8 @@ class VideoConverter():
         self.boton1.pack(padx=10, pady=10)
         self.boton2 = Button(text ="    convert    ", bg = "pale green", command = self.llamando_a_start, font = ("Arial Bold", 12))
         self.boton2.pack(padx=10, pady=10)
-        self.buton3 = Button(text ="      stop       ", bg = "pale green", command = self.llamando_a_stop, font = ("Arial Bold", 12))
-        self.buton3.pack(padx=10, pady=10)
+        self.boton3 = Button(text ="      stop       ", bg = "pale green", command = self.llamando_a_stop, font = ("Arial Bold", 12))
+        self.boton3.pack(padx=10, pady=10)
         self.window.mainloop()
                       
     def open_file(self):
