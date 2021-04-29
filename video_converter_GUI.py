@@ -22,13 +22,13 @@ class VideoConverter():
         self.mi_video = filedialog.askopenfilename(initialdir = "/",title = "selecione video")
 
     def llamando_a_start(self):
-        hilo1 = threading.Thread(target=start(self.mi_video)) #crea un hilo para que la convercion se ejecute en paralelo
-        #self.ejecucion = start(self.mi_video)
+        def para_thread():
+            start(self.mi_video)
+        hilo1 = threading.Thread(target = para_thread) #crea un hilo(objeto) para que la convercion se ejecute en paralelo
         hilo1.start() #inicio el hilo y llamada a funcion start
 
     def llamando_a_stop(self):
-        stop
-
+        print(" stop")
 
 def inicio():
     app = VideoConverter()    
