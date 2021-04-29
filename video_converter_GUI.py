@@ -1,6 +1,6 @@
 from tkinter import*
 from tkinter import filedialog
-from back_end_for_gui import*
+from backend import*
 import threading
 
 
