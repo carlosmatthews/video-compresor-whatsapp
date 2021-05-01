@@ -27,14 +27,12 @@ class VideoConverter():
     
     
     def crear_proceso(self):
-        proceso1 = multiprocessing.Process(target = self.llamando_a_start) #crea un hilo(objeto) para que la convercion se ejecute en paralelo
-        proceso1.start() #inicio el hilo y llamada a funcion start
+        self.proceso1 = multiprocessing.Process(target = self.llamando_a_start) #crea un hilo(objeto) para que la convercion se ejecute en paralelo
+        self.proceso1.start() #inicio el hilo y llamada a funcion start
         #hasta aca todo bien
-    def terminar_proceso():
-        #sera asi:  multiprocessing.Process.terminate()???? #aca no se como llamar a proceso1 y poner terminata.
-        #por que me dice que es de la clase videconverter y no tiene es atributo o algo asi
-        # o sera : proceso1.terminate()
-        # no funciona igual
+    
+    def terminar_proceso(self):
+       self.proceso1.terminate()
     
  
     
