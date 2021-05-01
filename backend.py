@@ -53,7 +53,7 @@ def start(mi_video):
         cortar_en_partes(video_escalado, ruta_salida)
         os.remove(video_escalado)
     
-    return "terminado"                
+                 
 
 
 
