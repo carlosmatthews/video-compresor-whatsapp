@@ -2,7 +2,7 @@ from tkinter import*
 from tkinter import filedialog
 from backend import*
 import threading
-
+import multiprocessing
 
 class VideoConverter():
  
@@ -14,22 +14,30 @@ class VideoConverter():
         self.boton1.pack(padx=10, pady=10)
         self.boton2 = Button(text ="    convert    ", bg = "pale green", command = self.llamando_a_start, font = ("Arial Bold", 12))
         self.boton2.pack(padx=10, pady=10)
-        self.boton3 = Button(text ="      stop       ", bg = "pale green", command = self.llamando_a_stop, font = ("Arial Bold", 12))
+        self.boton3 = Button(text ="      stop       ", bg = "pale green", command = self.terminar_proceso, font = ("Arial Bold", 12))
         self.boton3.pack(padx=10, pady=10)
         self.window.mainloop()
                       
     def open_file(self):
         self.mi_video = filedialog.askopenfilename(initialdir = "/",title = "selecione video")
 
+    
     def llamando_a_start(self):
-        def para_thread():
-            start(self.mi_video)
-        hilo1 = threading.Thread(target = para_thread) #crea un hilo(objeto) para que la convercion se ejecute en paralelo
-        hilo1.start() #inicio el hilo y llamada a funcion start
-
-    def llamando_a_stop(self):
-        print(" stop")
-
+        start(self.mi_video)
+    
+    
+    def crear_proceso(self):
+        proceso1 = multiprocessing.Process(target = self.llamando_a_start) #crea un hilo(objeto) para que la convercion se ejecute en paralelo
+        proceso1.start() #inicio el hilo y llamada a funcion start
+        #hasta aca todo bien
+    def terminar_proceso():
+        #sera asi:  multiprocessing.Process.terminate()???? #aca no se como llamar a proceso1 y poner terminata.
+        #por que me dice que es de la clase videconverter y no tiene es atributo o algo asi
+        # o sera : proceso1.terminate()
+        # no funciona igual
+    
+ 
+    
 def inicio():
     app = VideoConverter()    
     return 0
@@ -37,18 +45,6 @@ def inicio():
 
 if __name__ == '__main__':
     inicio()
-
-
-
-
-    
-
-"""
-
-Button(text ="selecione video",bg="pale green", command = open_file, font = ("Arial Bold", 15)).place(x=100,y=25)
-
-Button(text = "start", bg = "green", command = start, font = ("Arial Bold", 15)).place(x=100,y=80)
-"""
 
 
 
