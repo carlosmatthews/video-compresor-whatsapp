@@ -29,7 +29,7 @@ class VideoConverter():
     def crear_proceso(self):
         self.proceso1 = multiprocessing.Process(target = self.llamando_a_start) #crea un hilo(objeto) para que la convercion se ejecute en paralelo
         self.proceso1.start() #inicio el hilo y llamada a funcion start
-        #hasta aca todo bien
+     
     
     def terminar_proceso(self):
        self.proceso1.terminate()

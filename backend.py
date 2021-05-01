@@ -57,5 +57,3 @@ def start(mi_video):
 
 
 
-def stop():
-    sys.exit()
