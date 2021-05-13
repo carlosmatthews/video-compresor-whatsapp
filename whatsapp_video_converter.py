@@ -7,7 +7,7 @@ para mostrar trabajos y su visualisacion rapida.
 from moviepy.editor import *
 import os
 import sys
-from backend import start
+from backend2 import start
 
 
 if len(sys.argv) > 1 :
