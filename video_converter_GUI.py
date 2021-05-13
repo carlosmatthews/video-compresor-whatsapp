@@ -25,9 +25,7 @@ class VideoConverterGUI():
     
     
     def crear_hilo(self):
-        def llamando_a_start():
-            start(self.mi_video)    
-        
+        llamando_a_start = lambda: start(self.mi_video)    
         self.hilo1 = threading.Thread(target=llamando_a_start)
         self.hilo1.start()
     def terminar_hilo(self):
