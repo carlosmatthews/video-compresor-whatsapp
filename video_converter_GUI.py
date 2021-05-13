@@ -2,7 +2,7 @@ from tkinter import*
 from tkinter import filedialog
 from backend import*
 import threading
-import multiprocessing, threading
+
 
 class VideoConverterGUI():
  
@@ -23,13 +23,15 @@ class VideoConverterGUI():
         self.mi_video = filedialog.askopenfilename(initialdir = "/",title = "selecione video")
     
     
-    def llamando_a_start(self):
-        start(self.mi_video)    
+    
     def crear_hilo(self):
-        self.hilo1 = threading.Thread(target=self.llamando_a_start)
+        def llamando_a_start():
+            start(self.mi_video)    
+        
+        self.hilo1 = threading.Thread(target=llamando_a_start)
         self.hilo1.start()
     def terminar_hilo(self):
-        self.hilo1._stop() # este es una metodo no documentado que podria depreciarce  
+        self.hilo1._stop() # este es una metodo no documentado que podria deprecarce
  
  
 
