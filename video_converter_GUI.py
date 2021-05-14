@@ -1,6 +1,6 @@
 from tkinter import*
 from tkinter import filedialog
-from backend import*
+from backend2 import*
 import threading
 
 
@@ -25,8 +25,9 @@ class VideoConverterGUI():
     
     
     def crear_hilo(self):
-        llamando_a_start = lambda: start(self.mi_video)    
-        self.hilo1 = threading.Thread(target=llamando_a_start)
+        #llamando_a_start = lambda: start(self.mi_video)    
+        conversor = ConversorVideo(self.mi_video)
+        self.hilo1 = threading.Thread(target=conversor.start)
         self.hilo1.start()
     def terminar_hilo(self):
         self.hilo1._stop() # este es una metodo no documentado que podria deprecarce
